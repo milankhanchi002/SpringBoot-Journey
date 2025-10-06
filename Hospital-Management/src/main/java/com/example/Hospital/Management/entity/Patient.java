@@ -12,6 +12,12 @@ import java.time.LocalDate;
 @ToString
 @Getter
 @Setter
+@Table(name = "PatientTable",
+uniqueConstraints = {
+        @UniqueConstraint(name = "unique_patient_mail", columnNames = {"email"}),
+        @UniqueConstraint(name="unique_withname_dob",columnNames = {"name","Birth_date"})
+}
+)
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
